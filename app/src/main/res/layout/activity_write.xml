@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#7B7D85"
+    android:orientation="vertical"
+    tools:context=".PostActivity">
+
+    <EditText
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#7B7D85"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Infra Study"
+        android:textColor="#F6F0F0"
+        android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/postname_w"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="casual"
+        android:hint="post name : "
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/author_w"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="casual"
+        android:hint="author :" />
+
+    <EditText
+        android:id="@+id/maintext_w"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="casual"
+        android:hint="maintext : "
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:backgroundTint="#7B7D85"
+        android:fontFamily="casual"
+        android:textAllCaps="false"
+        android:text="Write" />
+
+</LinearLayout>

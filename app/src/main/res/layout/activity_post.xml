@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PostActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#7B7D85"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Infra Study"
+        android:textColor="#F6F0F0"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/postname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="post name : "
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="casual"
+        android:text="author :" />
+
+    <TextView
+        android:id="@+id/maintext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="casual"
+        android:text="maintext : "
+        android:textSize="20sp" />
+
+</LinearLayout>
