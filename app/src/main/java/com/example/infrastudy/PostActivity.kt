@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.infrastudy.databinding.ActivityPostBinding
+import kotlinx.android.synthetic.main.activity_post.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,9 +23,10 @@ class PostActivity : AppCompatActivity() {
     private fun initLayout() {
         val i=getIntent()
         val cur_user=i?.getSerializableExtra("cur_user") as String
-        val post_title=binding.postname.text.toString()
-        val post_author=cur_user
-        val post_content=binding.maintext.text.toString()
+        var cur_post=i?.getSerializableExtra("item") as GetPostResponse
+        binding.postname.text=cur_post.title
+        binding.author.text=cur_user
+        binding.maintext.text=cur_post.content
 
     }
 }

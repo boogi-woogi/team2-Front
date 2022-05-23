@@ -15,5 +15,6 @@ object APIServiceImp {
     val loginInterface = retrofit.create(LoginInterface::class.java)
     val joinInterface = retrofit.create(JoinInterface::class.java)
     val makePostInterface= retrofit.create(MakePostInterface::class.java)
+    val getPostInterface =retrofit.create(GetPostInterface::class.java)
 }
 

@@ -2,10 +2,8 @@ package com.example.infrastudy
 
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
+import java.math.BigInteger
 
 interface LoginInterface {
     @FormUrlEncoded
@@ -36,4 +34,10 @@ interface MakePostInterface{
         @Field("title") title:String,
         @Field("content") content:String
     ):Response<MakePostResponse>
+}
+
+interface GetPostInterface{
+    @GET("/board/list")
+    suspend fun GetPostRequest(
+    ):Response<ArrayList<GetPostResponse>?>
 }

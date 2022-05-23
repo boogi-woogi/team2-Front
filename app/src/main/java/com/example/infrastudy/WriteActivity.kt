@@ -25,7 +25,6 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun init() {
-
         binding.button.setOnClickListener {
             var response_MakePost: Response<MakePostResponse>
             val title = binding.postnameW.text.toString()
@@ -38,14 +37,17 @@ class WriteActivity : AppCompatActivity() {
                         content = content
                     )
                     if (response_MakePost != null) {
+                        val i=Intent()
+                        i.putExtra("additional_data", PostData(cur_user, title, content))
                         Log.i("message", response_MakePost.body().toString())
                         setResult(Activity.RESULT_OK)
                         finish()
-                    } else {
-                        Log.i("message", "making post failed")
-                        setResult(Activity.RESULT_CANCELED)
-                        finish()
                     }
+//                    else {
+//                        Log.i("message", "making post failed")
+//                        setResult(Activity.RESULT_CANCELED)
+//                        finish()
+//                    }
                 }
 
             }

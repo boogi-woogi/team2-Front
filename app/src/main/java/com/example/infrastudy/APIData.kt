@@ -2,6 +2,7 @@ package com.example.infrastudy
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
+import java.math.BigInteger
 
 data class JoinData (
     @SerializedName("userid") val id:String,
@@ -31,3 +32,10 @@ data class JoinResponse(
 data class MakePostResponse(
     @SerializedName("message") val msg:String
 )
+
+data class GetPostResponse(
+    @SerializedName("userid") val userid:String,
+    @SerializedName("postid") val postid: Int,
+    @SerializedName("title") val title:String,
+    @SerializedName("content") val content:String
+):Serializable
