@@ -10,7 +10,7 @@ interface LoginInterface {
     @POST("/users/login")
     suspend fun postLoginRequest(
         @Field("userid") userid:String,
-        @Field("password") userpw:String,
+        @Field("userpw") userpw:String,
     ) : Response<LoginResponse>
 }
 
@@ -32,7 +32,8 @@ interface MakePostInterface{
     suspend fun MakePostRequest(
         @Field("userid") userid:String,
         @Field("title") title:String,
-        @Field("content") content:String
+        @Field("content") content:String,
+        @Field("imageSrc") imageSrc:String
     ):Response<MakePostResponse>
 }
 

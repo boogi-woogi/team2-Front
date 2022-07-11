@@ -37,6 +37,12 @@
         android:fontFamily="casual"
         android:text="author :" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
     <TextView
         android:id="@+id/maintext"
         android:layout_width="match_parent"

@@ -70,6 +70,11 @@ class LoginActivity : AppCompatActivity() {
                             Log.i("message", "login failed")
                         }
                     }
+                    if(response_Login!=null){
+                        val i= Intent(this@LoginActivity, MainActivity::class.java)
+                        i.putExtra("cur_user", userid.text.toString())
+                        startActivity(i)
+                    }
                 }
             }
         }
