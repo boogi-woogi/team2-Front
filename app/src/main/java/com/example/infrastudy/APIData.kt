@@ -18,7 +18,8 @@ data class LoginData(
 data class PostData(
     @SerializedName("userid") val id:String,
     @SerializedName("title") val title:String,
-    @SerializedName("content") val content:String
+    @SerializedName("content") val content:String,
+    @SerializedName("imageSrc") val imageSrc:String
 ) : Serializable
 
 data class LoginResponse(
@@ -34,8 +35,9 @@ data class MakePostResponse(
 )
 
 data class GetPostResponse(
-    @SerializedName("userid") val userid:String,
-    @SerializedName("postid") val postid: Int,
-    @SerializedName("title") val title:String,
-    @SerializedName("content") val content:String
+    @SerializedName("_id") val postid: Int,
+    @SerializedName("board_title") val title:String,
+    @SerializedName("board_content") val content:String,
+    @SerializedName("image_src") val imageSrc:String,
+    @SerializedName("user_id") val userid:String?
 ):Serializable
