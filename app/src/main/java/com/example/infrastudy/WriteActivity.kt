@@ -3,19 +3,30 @@ package com.example.infrastudy
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.infrastudy.databinding.ActivityWriteBinding
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.util.jar.Manifest
+
 
 class WriteActivity : AppCompatActivity() {
     var PICK_IMAGE=1111
@@ -27,12 +38,49 @@ class WriteActivity : AppCompatActivity() {
         binding = ActivityWriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         cur_user = getIntent()?.getSerializableExtra("cur_user") as String
+
         init()
+
+
     }
+    private fun requestPermission(){
+        //permission check
+        ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),99)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode){
+            99->{
+                if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this,"권한승인",Toast.LENGTH_SHORT).show()
+                    openGallery()
+                }
+                else
+                    Toast.makeText(this,"승인거부",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    fun checkPermission(){
+        val perm=ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        if(perm==PackageManager.PERMISSION_GRANTED){
+            openGallery()
+        }
+        else{
+            requestPermission()
+        }
+    }
+
+
+
 
     private fun init() {
         binding.imgBtn.setOnClickListener {
-            openGallery()
+            checkPermission()
         }
         binding.button.setOnClickListener {
             var response_MakePost: Response<MakePostResponse>
@@ -91,8 +139,25 @@ class WriteActivity : AppCompatActivity() {
             val selectedImage: Uri? = data.data
             binding.uploadImage.setImageURI(selectedImage)
             val path = getRealPathFromURI(selectedImage)
-            imageSrc=path!!
+            val imgfile=File(path)
+            val requestFile= RequestBody.create(MediaType.parse("image/*"),imgfile)
+            Log.d("imgsuc",requestFile.toString())
+
+            val body=MultipartBody.Part.createFormData("file",imgfile.name,requestFile)
+            Log.d("imgsuc",body.toString())
+
+            APIServiceImp.imageInterface.sendImg(body).enqueue(object :Callback<imgaeResponse>{
+                override fun onResponse(call: Call<imgaeResponse>, response: Response<imgaeResponse>) {
+                    Log.d("imgsuc",response?.body().toString()+"success")
+                    imageSrc= response.body()!!.image_Src
+                }
+                override fun onFailure(call: Call<imgaeResponse>, t: Throwable) {
+                    Log.d("imgonfail","fail"+t.message)
+                }
+            })
+            //   imageSrc=path!!
             Log.i(path, "path")
+
         }
     }
 

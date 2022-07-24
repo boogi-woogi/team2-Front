@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.webkit.CookieManager
 import android.widget.Toast
 import com.example.infrastudy.databinding.ActivityLoginBinding
 import kotlinx.coroutines.CoroutineScope
@@ -45,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
                         )
                         if (response_Join != null) {
                             Log.i("message", "join success")
+
                         } else {
                             Log.i("message", "join failed")
                         }

@@ -1,6 +1,7 @@
 package com.example.infrastudy
 
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import java.io.Serializable
 import java.math.BigInteger
 
@@ -41,3 +42,12 @@ data class GetPostResponse(
     @SerializedName("image_src") val imageSrc:String,
     @SerializedName("user_id") val userid:String?
 ):Serializable
+
+data class imgaeResponse(
+    @SerializedName("message") val message:String,
+    @SerializedName("image_src") val image_Src:String
+)
+
+data class DeleteResponse(
+    @SerializedName("message") val msg:String
+)

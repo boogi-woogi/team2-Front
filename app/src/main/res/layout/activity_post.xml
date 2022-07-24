@@ -52,4 +52,10 @@
         android:text="maintext : "
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/deletebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete" />
+
 </LinearLayout>

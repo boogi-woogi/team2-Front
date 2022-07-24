@@ -1,9 +1,12 @@
 package com.example.infrastudy
 
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 import java.math.BigInteger
+
+
 
 interface LoginInterface {
     @FormUrlEncoded
@@ -20,7 +23,7 @@ interface JoinInterface{
     @POST("/users")
     suspend fun postJoinRequest(
         @Field("userid") userid:String,
-        @Field("password") userpw:String,
+        @Field("userpw") userpw:String,
         @Field("username") username:String
     ) : Response<JoinResponse>
 }
@@ -38,7 +41,23 @@ interface MakePostInterface{
 }
 
 interface GetPostInterface{
+
     @GET("/board/list")
     suspend fun GetPostRequest(
     ):Response<ArrayList<GetPostResponse>?>
+}
+
+interface DeleteInterface{
+    @DELETE("/board/{board_id}")
+    suspend fun DeleteRequest(
+        @Path("board_id") _id:Int
+    ):Response<DeleteResponse>
+}
+
+interface ImageInterface{
+    @Multipart
+    @POST("/images")
+    fun sendImg(
+        @Part file:MultipartBody.Part
+    ):Call<imgaeResponse>
 }

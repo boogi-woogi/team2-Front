@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         //게시글을 작성하려면 현재 유저를 알고 있어야하니까.
 //        cur_user = getIntent()?.getSerializableExtra("cur_user") as String
         cur_user="testing"
+    }
+
+    override fun onResume() {
+        super.onResume()
         initData()
         initLayout()
     }
@@ -206,7 +210,5 @@ class MainActivity : AppCompatActivity() {
 //            Log.d("ActivityResult", "something wrong")
 //        }
 //    }
-
-
 
 
