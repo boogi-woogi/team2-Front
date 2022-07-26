@@ -47,6 +47,12 @@ interface GetPostInterface{
     ):Response<ArrayList<GetPostResponse>?>
 }
 
+interface GetUserInterface{
+    @GET("/users/getid")
+    suspend fun GetUserRequest(
+    ):Response<ArrayList<GetUserResponse>?>
+}
+
 interface DeleteInterface{
     @DELETE("/board/{board_id}")
     suspend fun DeleteRequest(

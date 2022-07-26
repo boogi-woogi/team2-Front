@@ -42,6 +42,9 @@ data class GetPostResponse(
     @SerializedName("image_src") val imageSrc:String,
     @SerializedName("user_id") val userid:String?
 ):Serializable
+data class GetUserResponse(
+    @SerializedName("user_id") val userid:String
+)
 
 data class imgaeResponse(
     @SerializedName("message") val message:String,
